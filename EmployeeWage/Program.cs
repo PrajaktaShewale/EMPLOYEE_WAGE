@@ -21,11 +21,11 @@ namespace EmployeeWage
                     break;
 
                 case partTime:
-                    empWage = 4;
+                    empHrs = 4;
                     Console.WriteLine("Employee is Present");
                     break;
                 default:
-                    empWage = 0;
+                    empHrs = 0;
                     Console.WriteLine("Employee is Absent");
                     break;
             }
