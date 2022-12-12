@@ -3,41 +3,51 @@
 namespace EmployeeWage
 {
     internal class Program
-    {
-        public const int fullTime = 1, partTime = 2, Emp_Rate_Per_Hrs = 20, numWorkingDays = 20,MaxHrsInMonth=100;
+    {        
         static void Main(string[] args)
         {
-            int empHrs = 0, empWage = 0, TotalWorkingDays = 0, totalEmpHrs =0 ;
-            
-            while(totalEmpHrs <= MaxHrsInMonth && TotalWorkingDays < numWorkingDays)
+            bool flag = true;
+            while (flag)
             {
-                TotalWorkingDays++;
-                Random randomObj = new Random();
-                int checkPresent = randomObj.Next(0, 3);
-                Console.WriteLine("Random Number is " + checkPresent);
-
-                switch (checkPresent)
+                Console.WriteLine("employee Wage Problem");
+                Console.WriteLine("Enter a number to get perticular UC");
+                Console.WriteLine("1.Attendance\n2.Calculate Daily EMP Wage\n3.Add Part Time EMP Wage\n4.Calculate EMP Wage Using Switch statement" +
+                    "\n5.Calculate Wages For A month\n6.Calculate till hrs and Condition Apply");
+                int check = Convert.ToInt32(Console.ReadLine());
+                switch(check)
                 {
-                    case fullTime:
-                        empHrs = 8;
-                        Console.WriteLine("Employee is Present");
+                    case 1:
+                        AttendanceUC1 uc1 = new AttendanceUC1();
+                        uc1.Attendance();
+                        break;
+                        case 2:
+                        DailyEmpWageUC2 uc2 = new DailyEmpWageUC2();
+                        uc2.DailyWage();
+                        break;
+                    case 3:
+                        AddPartTimeEMPWageUC3 uc3 = new AddPartTimeEMPWageUC3();
+                        uc3.AddParttime();
+                        break;
+                    case 4:
+                        CalEMPWageSwitchCaseUC4 uc4 = new CalEMPWageSwitchCaseUC4();
+                        uc4.SwitchCase();
+                        break;
+                    case 5:
+                        CalWagesForMonthUC5 uc5 = new CalWagesForMonthUC5();
+                        uc5.Month();
+                        break;
+                    case 6:
+                        CalWagesTillConditionUC6 uc6 = new CalWagesTillConditionUC6();
+                        uc6.DayMonthCondition();
+                        break;
+                        default:
+                        flag = false;
                         break;
 
-                    case partTime:
-                        empHrs = 4;
-                        Console.WriteLine("Employee is Present");
-                        break;
-
-                    default:
-                        empHrs = 0;
-                        Console.WriteLine("Employee is Absent");
-                        break;
                 }
-                totalEmpHrs += empHrs;
-                Console.WriteLine("Days :" + TotalWorkingDays + "EmployeeHrs :" + empHrs);
             }
-            int totalEmpWage = totalEmpHrs * Emp_Rate_Per_Hrs;
-            Console.WriteLine("Total Emp Wage :" + totalEmpWage);
+
+
         }
     }
 }
